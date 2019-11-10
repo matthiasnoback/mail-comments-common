@@ -1,0 +1,23 @@
+{
+  "name": "matthiasnoback/mail-comments-common",
+  "license": "MIT",
+  "require": {
+    "php":"^7.2",
+    "swiftmailer/swiftmailer": "^6.2",
+    "ramsey/uuid": "^3.8",
+    "thecodingmachine/safe": "^0.1.16"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^7.5"
+  },
+  "autoload": {
+    "psr-4": {
+      "MailCommentsCommon\\": "src/MailCommentsCommon/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "MailCommentsCommon\\": "test/Unit/MailCommentsCommon/"
+    }
+  }
+}
