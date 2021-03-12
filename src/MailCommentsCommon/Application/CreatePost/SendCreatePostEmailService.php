@@ -11,25 +11,13 @@ use MailCommentsCommon\Domain\PostIdFactory;
 
 final class SendCreatePostEmailService
 {
-    /**
-     * @var AuthorizationToken
-     */
-    private $authorizationToken;
+    private AuthorizationToken $authorizationToken;
 
-    /**
-     * @var PostIdFactory
-     */
-    private $postIdFactory;
+    private PostIdFactory $postIdFactory;
 
-    /**
-     * @var EmailAddress
-     */
-    private $emailAddress;
+    private EmailAddress $emailAddress;
 
-    /**
-     * @var Mailer
-     */
-    private $mailer;
+    private Mailer $mailer;
 
     public function __construct(
         AuthorizationToken $authorizationToken,

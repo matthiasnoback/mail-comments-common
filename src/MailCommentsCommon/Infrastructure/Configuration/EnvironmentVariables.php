@@ -9,10 +9,13 @@ use Webmozart\Assert\Assert;
 final class EnvironmentVariables
 {
     /**
-     * @var array
+     * @var array<string,mixed>
      */
-    private $env;
+    private array $env;
 
+    /**
+     * @param array<string,mixed> $variables
+     */
     private function __construct(array $variables)
     {
         $this->env = $variables;
@@ -26,11 +29,17 @@ final class EnvironmentVariables
         return self::fromArray($env);
     }
 
+    /**
+     * @param array<string,mixed> $env
+     */
     public static function fromArray(array $env): self
     {
         return new self($env);
     }
 
+    /**
+     * @return array<string,mixed>
+     */
     public function all(): array
     {
         return $this->env;

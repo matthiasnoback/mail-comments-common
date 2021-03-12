@@ -5,20 +5,11 @@ namespace MailCommentsCommon\Application\Email;
 
 final class Attachment
 {
-    /**
-     * @var string
-     */
-    private $content;
+    private string $content;
 
-    /**
-     * @var string
-     */
-    private $filename;
+    private string $filename;
 
-    /**
-     * @var string
-     */
-    private $contentType;
+    private string $contentType;
 
     public function __construct(string $content, string $filename, string $contentType)
     {

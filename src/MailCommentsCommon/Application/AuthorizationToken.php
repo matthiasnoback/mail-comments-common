@@ -7,10 +7,7 @@ use Webmozart\Assert\Assert;
 
 final class AuthorizationToken
 {
-    /**
-     * @var string
-     */
-    private $id;
+    private string $id;
 
     private function __construct(string $id)
     {
@@ -28,7 +25,7 @@ final class AuthorizationToken
         return $this->id;
     }
 
-    public function isValid(string $authorizationToken)
+    public function isValid(string $authorizationToken): bool
     {
         return $this->id === $authorizationToken;
     }

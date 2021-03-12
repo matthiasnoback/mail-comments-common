@@ -7,10 +7,7 @@ use Webmozart\Assert\Assert;
 
 final class PostId
 {
-    /**
-     * @var string
-     */
-    private $id;
+    private string $id;
 
     private function __construct(string $id)
     {

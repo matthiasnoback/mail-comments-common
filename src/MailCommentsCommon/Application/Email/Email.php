@@ -8,45 +8,24 @@ use function Safe\json_encode;
 
 final class Email
 {
-    /**
-     * @var string|null
-     */
-    private $subject;
+    private ?string $subject;
+
+    private ?string $fromAddress;
+
+    private ?string $fromName;
+
+    private ?string $toAddress;
+
+    private ?string $toName;
+
+    private ?string $plainTextBody;
+
+    private ?string $htmlBody;
 
     /**
-     * @var string|null
+     * @var array<Attachment>
      */
-    private $fromAddress;
-
-    /**
-     * @var string|null
-     */
-    private $fromName;
-
-    /**
-     * @var string|null
-     */
-    private $toAddress;
-
-    /**
-     * @var string|null
-     */
-    private $toName;
-
-    /**
-     * @var string|null
-     */
-    private $body;
-
-    /**
-     * @var string|null
-     */
-    private $contentType;
-
-    /**
-     * @var array & Attachment[]
-     */
-    private $attachments = [];
+    private array $attachments = [];
 
     private function __construct()
     {
@@ -86,12 +65,20 @@ final class Email
         return $copy;
     }
 
-    public function withBody(?string $body, string $contentType): self
+    public function withPlainTextBody(?string $plainTextBody): self
     {
         $copy = clone $this;
 
-        $copy->body = $body;
-        $copy->contentType = $contentType;
+        $copy->plainTextBody = $plainTextBody;
+
+        return $copy;
+    }
+
+    public function withHtmlBody(?string $htmlBody): self
+    {
+        $copy = clone $this;
+
+        $copy->htmlBody = $htmlBody;
 
         return $copy;
     }
@@ -134,14 +121,14 @@ final class Email
         return $this->toName;
     }
 
-    public function body(): ?string
+    public function plainTextBody(): ?string
     {
-        return $this->body;
+        return $this->plainTextBody;
     }
 
-    public function contentType(): ?string
+    public function htmlBody(): ?string
     {
-        return $this->contentType;
+        return $this->htmlBody;
     }
 
     /**
@@ -159,7 +146,7 @@ final class Email
                 'subject' => $this->subject,
                 'to' => $this->toAddress,
                 'from' => $this->fromAddress,
-                'body' => $this->body,
+                'body' => $this->plainTextBody,
                 'attachments' => count($this->attachments())
             ]
         );

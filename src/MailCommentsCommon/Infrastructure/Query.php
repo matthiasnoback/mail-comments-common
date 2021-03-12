@@ -5,6 +5,9 @@ namespace MailCommentsCommon\Infrastructure;
 
 final class Query
 {
+    /**
+     * @param array<string,mixed> $parameters
+     */
     public static function buildFromParameters(array $parameters): string
     {
         $subjectParts = [];

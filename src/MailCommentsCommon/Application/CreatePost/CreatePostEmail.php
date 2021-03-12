@@ -20,7 +20,7 @@ final class CreatePostEmail
         string $url,
         AuthorizationToken $authorizationToken,
         EmailAddress $emailAddress
-    ) {
+    ): Email {
         return Email::fromScratch()
             ->withSubject(
                 Query::buildFromParameters(
@@ -31,7 +31,7 @@ final class CreatePostEmail
                     ]
                 )
             )
-            ->withBody('This is not a spam message', 'text/plain')
+            ->withPlainTextBody('This is not a spam message')
             ->withTo($emailAddress->asString())
             ->withFrom($emailAddress->asString());
     }
