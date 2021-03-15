@@ -8,19 +8,19 @@ use function Safe\json_encode;
 
 final class Email
 {
-    private ?string $subject;
+    private ?string $subject = null;
 
-    private ?string $fromAddress;
+    private ?string $fromAddress = null;
 
-    private ?string $fromName;
+    private ?string $fromName = null;
 
-    private ?string $toAddress;
+    private ?string $toAddress = null;
 
-    private ?string $toName;
+    private ?string $toName = null;
 
-    private ?string $plainTextBody;
+    private ?string $plainTextBody = null;
 
-    private ?string $htmlBody;
+    private ?string $htmlBody = null;
 
     /**
      * @var array<Attachment>
@@ -146,7 +146,8 @@ final class Email
                 'subject' => $this->subject,
                 'to' => $this->toAddress,
                 'from' => $this->fromAddress,
-                'body' => $this->plainTextBody,
+                'plain_text_body' => $this->plainTextBody,
+                'html_body' => $this->htmlBody,
                 'attachments' => count($this->attachments())
             ]
         );
